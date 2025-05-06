@@ -104,10 +104,11 @@ class InteractiveSelection extends AbstractSelection {
 
   dragSelection(event) {
     event.stopPropagation();
-
-    this.setState(state => ({
-      area: this.dragCalculator.calculate(event, state.area, this.innerOffsets),
-    }));
+    if (this.dragCalculator) {
+      this.setState(state => ({
+        area: this.dragCalculator.calculate(event, state.area, this.innerOffsets),
+      }));
+    }
   }
 
   resizeSelection(event) {
