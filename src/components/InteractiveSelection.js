@@ -40,8 +40,13 @@ class InteractiveSelection extends AbstractSelection {
     this.dragSelection = this.dragSelection.bind(this);
     this.resizeSelection = this.resizeSelection.bind(this);
 
-    this.resizeCalculator = null;
-    this.dragCalculator = null;
+    if (props.containerParameters) {
+      this.resizeCalculator = ResizeCalculator(props.containerParameters);
+      this.dragCalculator = DragCalculator(props.containerParameters);
+    } else {
+      this.resizeCalculator = null;
+      this.dragCalculator = null;
+    }
   }
 
   componentDidMount() {
