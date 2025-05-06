@@ -236,6 +236,11 @@ class InteractiveSelection extends AbstractSelection {
           className="mr-selection__handle mr-selection__handle--left-center"
           data-side={sides.LEFT}
         />
+        { Boolean(this.props.label) && (
+          <div className="mr-selection__label">
+            { this.props.label }
+          </div>
+        )}
       </div>
     );
   }
