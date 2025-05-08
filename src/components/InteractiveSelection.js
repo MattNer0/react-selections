@@ -56,11 +56,21 @@ class InteractiveSelection extends AbstractSelection {
   componentWillReceiveProps(nextProps) {
     const { area, containerParameters } = nextProps;
 
-    this.resizeCalculator = ResizeCalculator(containerParameters);
-    this.dragCalculator = DragCalculator(containerParameters);
-    this.containerParameters = containerParameters;
+    if (area?.dimensions && area?.offsets && this.state.area && this.state.area.dimensions) {
+      if (area?.dimensions.width !== this.state.area.dimensions.width || area?.dimensions.height !== this.state.area.dimensions.height || area?.offsets.left !== this.state.area.offsets.left || area?.offsets.top !== this.state.area.offsets.top) {
+        this.resizeCalculator = ResizeCalculator(containerParameters);
+        this.dragCalculator = DragCalculator(containerParameters);
+        this.containerParameters = containerParameters;
 
-    this.setState({ area });
+        this.setState({ area });
+      }
+    } else if (area?.dimensions && area?.offsets) {
+      this.resizeCalculator = ResizeCalculator(containerParameters);
+      this.dragCalculator = DragCalculator(containerParameters);
+      this.containerParameters = containerParameters;
+
+      this.setState({ area });
+    }
   }
 
   componentWillUnmount() {

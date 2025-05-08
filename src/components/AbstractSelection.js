@@ -113,6 +113,7 @@ AbstractSelection.propTypes = {
       y: PropTypes.number,
     }),
   }).isRequired,
+  label: PropTypes.string,
   zIndex: PropTypes.number.isRequired,
   focusable: PropTypes.bool,
   onClick: PropTypes.func,
