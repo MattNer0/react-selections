@@ -26,7 +26,7 @@
   "dependencies": {
     "css-class-combiner": "^1.0.4",
     "prop-types": "^15.6.2",
-    "react": "^16.4.1"
+    "react": "^19.0.0"
   },
   "devDependencies": {
     "jest": "^24.8.0",
